@@ -11,7 +11,8 @@ do
 {
     // display grid from player 1 on where they fired
     DisplayShotGrid(activePlayer);
-
+    Console.WriteLine();
+    Console.WriteLine();
     //ask player 1 for a shot
     // determine if shot is valid
     // detemine shot result
@@ -32,6 +33,7 @@ do
 } while (winner == null);
 
 IdentifyWinner(winner);
+Console.ReadLine();
 
 void IdentifyWinner(PlayerInfoModel winner)
 {
@@ -106,8 +108,6 @@ void DisplayShotGrid(PlayerInfoModel activePlayer)
         }
     }
 }
-
-Console.ReadLine();
 
 static void WelcomeMessage()
 {

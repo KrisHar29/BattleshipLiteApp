@@ -129,9 +129,22 @@ namespace BattleshipLiteLibrary
             return isAHit;
         }
 
-        public static void MarkShotResult(PlayerInfoModel activePlayer, string row, int column, bool isAHit)
+        public static void MarkShotResult(PlayerInfoModel player, string row, int column, bool isAHit)
         {
-            throw new NotImplementedException();
+            foreach (var gridSpot in player.ShotGrid)
+            {
+                if (gridSpot.SpotLetter == row.ToUpper() && gridSpot.SpotNumber == column)
+                {
+                    if (isAHit)
+                    {
+                        gridSpot.Status = GridSpotStatus.Hit;
+                    }
+                    else
+                    {
+                        gridSpot.Status = GridSpotStatus.Miss;
+                    }
+                }
+            }
         }
 
         public static bool PlaceShip(PlayerInfoModel model, string location)
@@ -180,7 +193,7 @@ namespace BattleshipLiteLibrary
             {
                     if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)
                     {
-                        isValidLocation = false;
+                        isValidLocation = true;
                     }
             }
 
